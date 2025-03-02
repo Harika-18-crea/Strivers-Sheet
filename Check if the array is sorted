@@ -1,0 +1,16 @@
+class Solution(object):
+    def check(self, nums):
+        # Variable to count number of drops
+        drop_count = 0
+        
+        for i in range(len(nums)):
+            # Check if the current element is greater than the next element
+            if nums[i] > nums[(i + 1) % len(nums)]:  # % to make it circular
+                drop_count += 1
+            
+            # If there is more than one drop, return False
+            if drop_count > 1:
+                return False
+        
+        # If there's at most one drop, it's a valid rotated sorted array
+        return drop_count <= 1
